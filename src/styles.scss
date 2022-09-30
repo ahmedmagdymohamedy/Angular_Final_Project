@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primaryColor : #E99C2F;
+
+.tx-primry {
+    color: $primaryColor;
+}
+
+.bg-primry {
+    background-color: $primaryColor;
+}
