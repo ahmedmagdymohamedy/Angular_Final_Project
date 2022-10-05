@@ -1,3 +1,4 @@
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+user=this.authService.currentuser$;
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit(): void {
   }

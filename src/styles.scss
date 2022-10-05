@@ -1,11 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
-
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 $primaryColor : #E99C2F;
 
-.tx-primry {
-    color: $primaryColor;
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+ 
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.bg-primry {
-    background-color: $primaryColor;
+.form-container {
+  display: block;
+  max-width: 450px;
+  margin: auto;
+
+  background: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
+  margin-top: 50px;
+
+  mat-form-field {
+    width: 100%;
+  }
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-top {
+  margin-top: 16px !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// .tx-primry {
+//     color: $primaryColor;
+// }
+
+// .bg-primry {
+//     background-color: $primaryColor;
