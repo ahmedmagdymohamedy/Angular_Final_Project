@@ -7,7 +7,7 @@ import { LoginComponent } from './modules/auth-page/componants/login/login.compo
 import { RegistrationComponent } from './modules/auth-page/componants/registration/registration.component';
 import{canActivate,redirectUnauthorizedTo,redirectLoggedInTo} from '@angular/fire/auth-guard'
 const redirectToLogin=()=>redirectUnauthorizedTo(['login']);
-const redirectToHome=()=>redirectLoggedInTo(['home']);
+const redirectToHome=()=>redirectLoggedInTo(['home-page']);
 
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
 
   },
   {
-    path:"home",
+    path:"home-page",
     component:HomeComponent,
     ...canActivate(redirectToLogin)
   }

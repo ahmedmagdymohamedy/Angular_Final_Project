@@ -1,5 +1,68 @@
-<header>
-    <nav>
 
-    </nav>
-</header>
+
+     <header>
+        <nav class="navbar navbar-expand-lg  color bootsnav sticky-lg-top  fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="#">sine<span>mkt</span>.</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"> <i class="fas fa-hamburger"></i></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0 ullist ">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">New arrival</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      Features
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="signu.html">Contact</a>
+                  </li>
+                </ul>
+                <div>
+                    <ul class="navbar-nav m-auto mb-2 mb-lg-0 ullist ">
+                        <li>
+                    <a class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa-sharp fa-solid fa-gear"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+         
+                <ng-container *ngIf="authservice.currentuser$ | async as user; else  loginButton">
+    
+                    <button mat-button [mat-menu-trigger-for]="userMenu" >
+                       <mat-icon><span >account_circle</span> </mat-icon>
+               
+                        {{user.displayName}}
+                       <mat-icon>expand_more</mat-icon>
+                   </button> 
+           
+               </ng-container>
+               <ng-template #loginButton>
+                <button mat-button routerLink="/login">
+                    Login
+                </button> 
+            </ng-template>
+            
+           
+     
+        <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+        
+        </mat-menu>
+    </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
