@@ -5,7 +5,12 @@
                 <img [src]="product.image" style="width : 100%" />
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-8 p-5">
+            <h2 class="">{{product.title}}</h2>
+            <h5 class="text-my-primary"><span>
+                    <h5 class="text-dark"> Category : </h5>
+                </span>{{product.category}}</h5>
+            <p>{{product.description}}</p>
         </div>
     </div>
 </div>
