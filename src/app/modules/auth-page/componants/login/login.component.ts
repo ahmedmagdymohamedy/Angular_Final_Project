@@ -46,7 +46,7 @@ loading:"Loading in ...",
 error:"There an error"
 
 })).subscribe(()=>{
-  this.router.navigate(['/home']); });
+  this.router.navigate(['/home-page']); });
 
    
   }

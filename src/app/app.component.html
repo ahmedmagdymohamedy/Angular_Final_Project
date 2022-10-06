@@ -1,36 +1,5 @@
 <app-my-header></app-my-header>
 
- <mat-toolbar color="primary">
-<div>
-    SH<span style="color: rgb(210, 161, 134);">OO</span>PY
-
-</div>
-    <ng-container *ngIf="authservice.currentuser$ | async as user; else  loginButton">
-
-     <button mat-button [mat-menu-trigger-for]="userMenu" >
-        <mat-icon><span >account_circle</span> </mat-icon>
-
-         {{user.displayName}}
-        <mat-icon> expand_more </mat-icon>
-    </button> 
-</ng-container>
-
-    <ng-template #loginButton>
-        <button mat-button routerLink="/login">
-            Login
-        </button> 
-    </ng-template>
-    
-   
-</mat-toolbar> 
-
-
-<!-- <app-registration></app-registration> -->
-<!-- <app-login></app-login>  -->
 
 <router-outlet></router-outlet><!-- ng g m app-routing --flat -->
 
-<mat-menu #userMenu="matMenu">
-<button mat-menu-item (click)="logout()">Logout</button>
-
-</mat-menu>
