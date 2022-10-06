@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { CarouselSlideComponent } from './components/carousel-slide/carousel-slide.component';
 
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    HomePageComponent,
+    CarouselSlideComponent
   ],
   imports: [
     CommonModule

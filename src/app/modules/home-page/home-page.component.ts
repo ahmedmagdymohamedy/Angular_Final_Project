@@ -11,6 +11,7 @@ user=this.authService.currentuser$;
   constructor(private authService:AuthenticationService) { }
 
   ngOnInit(): void {
+    
   }
 
 }
