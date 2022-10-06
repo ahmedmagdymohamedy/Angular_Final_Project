@@ -1,0 +1,22 @@
+.btn-m {
+  color: #fff;
+  background-color: #e99c2e;
+  border-color: #e99c2e; /*set the color you want here*/
+}
+.btn-m:hover, .btn-m:focus, .btn-m:active, .btn-m.active, .open>.dropdown-toggle.btn-m {
+  color: #e99c2e;
+  background-color: #f8f9fd;
+  border-color: #e99c2e; /*set the color you want here*/
+}
+
+.btn-s {
+  color: #e99c2e;
+  background-color: #f8f9fd;
+  border-color: #f8f9fd; /*set the color you want here*/
+}
+
+.btn-s:hover, .btn-s:focus, .btn-s:active, .btn-s.active, .open>.dropdown-toggle.btn-s {
+  color: #e99c2e;
+  background-color: #f8f9fd;
+  border-color: #e99c2e; /*set the color you want here*/
+}
