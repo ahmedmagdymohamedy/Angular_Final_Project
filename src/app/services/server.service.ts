@@ -15,6 +15,6 @@ export class ServerService {
   }
 
   getProductByID(productID: number): Observable<any> {
-    return this.httpClient.get(ServerService.BASE_URL + '/product/' + productID);
+    return this.httpClient.get(ServerService.BASE_URL + '/products/' + productID);
   }
 }
