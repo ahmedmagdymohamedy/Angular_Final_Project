@@ -3,7 +3,7 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 $primaryColor: #e99c2e;
 $SecondaryColor: #616060;
-$myText-light: #a09e9c;
+$myText-light: #A6A4A2;
 $Bg-color-main: #f8f9fd;
 
 .txt-primary {
@@ -44,7 +44,7 @@ body {
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  background-color: $Bg-color-main;
+  //background-color: $Bg-color-main;
 }
 
 .form-container {

@@ -18,13 +18,13 @@ export class HomePageComponent implements OnInit {
       img: '../../../assets/1.png',
     },
     {
-      title: 'Cloth Covered Accent Chair',
+      title: 'Samsung 860 EVO SATA III 2.5',
       priceAfter: '399.00',
       priceBefore: '499.00',
       img: '../../../assets/2.png',
     },
     {
-      title: 'Valvet Accent Arm Chair',
+      title: 'Clothes iron Panasonic',
       priceAfter: '299.00',
       priceBefore: '399.00',
       img: '../../../assets/3.png',
