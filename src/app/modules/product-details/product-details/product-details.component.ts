@@ -1,6 +1,7 @@
 import { ServerService } from './../../../services/server.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-product-details',
@@ -13,6 +14,9 @@ export class ProductDetailsComponent implements OnInit {
 
   productID: number = 0;
   product: any = null;
+
+  isOnWishList: boolean = false;
+  isOnCart: boolean = false;
 
   otherProducts: any[] = [];
 
@@ -31,5 +35,20 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
+  toggolToCard() {
+    if (!this.isOnCart) {
+      this.server.addToCart(3, this.product).subscribe(e => {
+        this.isOnCart = true;
+      })
+    }
+  }
+
+  toggolToWishList() {
+    if (!this.isOnWishList) {
+      this.server.addToWishList(3, this.product).subscribe(e => {
+        this.isOnWishList = true;
+      })
+    }
+  }
 
 }

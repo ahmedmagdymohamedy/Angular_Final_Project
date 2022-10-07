@@ -1,6 +1,5 @@
 import { ProductDetailsComponent } from './modules/product-details/product-details/product-details.component';
 import { CommonModule } from '@angular/common';
-import { LandingComponent } from './modules/auth-page/componants/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth-page/componants/login/login.component';
@@ -19,7 +18,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: LandingComponent,
+    component: HomePageComponent,
     // loadChildren: () => import('./modules/home-page/home-page.module').then(m => m.HomePageModule)
   },
   {
@@ -68,4 +67,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

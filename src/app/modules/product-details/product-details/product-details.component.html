@@ -13,9 +13,12 @@
             <div class="mt-2">
                 <app-star-rate [rate]="product.rating.rate"></app-star-rate>
             </div>
-            <button class="py-2 px-3 border-0  bg-primary-color text-light fw-bold mt-5">Add To Cart</button>
-            <button class="py-2 px-3 border-0  bg-primary-color text-light ms-1"><i
-                    class="fa-regular fa-heart"></i></button>
+            <button class="py-2 px-3 border-0  bg-primary-color text-light fw-bold mt-5" (click)="toggolToCard()">
+                {{!isOnCart ? "Add To Cart" : "Remove From Cart"}}</button>
+            <button class="py-2 px-3 border-0  bg-primary-color text-light ms-1" (click)="toggolToWishList()">
+                <i *ngIf="!isOnWishList" class="fa-regular fa-heart"></i>
+                <i *ngIf="isOnWishList" class="fa-solid fa-heart"></i>
+            </button>
         </div>
     </div>
     <section style="margin-top: 120px;">
