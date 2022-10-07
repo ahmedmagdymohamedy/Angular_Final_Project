@@ -1,0 +1,24 @@
+.text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+.my-card {
+    background-color: white;
+    transition: 400ms;
+}
+
+.my-card:hover {
+    transform: scale(1.1);
+}
+
+
+.btn-hover:hover {
+    color: #e99c2e !important;
+}

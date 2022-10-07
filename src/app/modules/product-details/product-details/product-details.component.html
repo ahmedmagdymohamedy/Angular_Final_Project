@@ -24,11 +24,6 @@
     <section style="margin-top: 120px;">
         <h2 class="txt-secondary">Browse too </h2>
 
-        <!-- here i will user product card that will some one create -->
-        <span *ngFor="let item of otherProducts">
-            <span class="p-5 border border-5" style="background-color:white ; width : 200px ; height: 300px;">
-                <img [src]="item.image" style="width : 200px ; height: 200px; object-fit:contain;" />
-            </span>
-        </span>
+        <app-product-card *ngFor="let item of otherProducts" class="d-inline-block" [product]="item"></app-product-card>
     </section>
 </div>
