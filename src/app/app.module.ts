@@ -18,14 +18,15 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { RegistrationComponent } from './modules/auth-page/componants/registration/registration.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { StarRateComponent } from './components/star-rate/star-rate.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyHeaderComponent,
     LoginComponent,
-    RegistrationComponent
-
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -46,6 +46,8 @@ import { MatMenuModule } from '@angular/material/menu';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule { }

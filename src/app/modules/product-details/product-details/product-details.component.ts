@@ -14,6 +14,8 @@ export class ProductDetailsComponent implements OnInit {
   productID: number = 0;
   product: any = null;
 
+  otherProducts: any[] = [];
+
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((data: ParamMap) => {
       this.productID = parseInt(data.get("id") || "0")
@@ -22,6 +24,10 @@ export class ProductDetailsComponent implements OnInit {
         this.product = e;
       });
     })
+
+    this.server.getProducts().subscribe((e: any[]) => {
+      this.otherProducts = e.filter(e => e.id != this.productID);
+    });
   }
 
 
