@@ -18,8 +18,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { RegistrationComponent } from './modules/auth-page/componants/registration/registration.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { StarRateComponent } from './components/star-rate/star-rate.component';
-import { CommonModule } from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +26,8 @@ import { CommonModule } from '@angular/common';
     MyHeaderComponent,
     LoginComponent,
     RegistrationComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,
