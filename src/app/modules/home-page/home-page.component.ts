@@ -1,5 +1,7 @@
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from 'src/app/services/server.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   user = this.authService.currentuser$;
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService, private server: ServerService) {}
 
   objArr: {}[] = [
     {
@@ -18,17 +20,29 @@ export class HomePageComponent implements OnInit {
       img: '../../../assets/1.png',
     },
     {
-      title: 'Cloth Covered Accent Chair',
+      title: 'Samsung 860 EVO SATA III 2.5',
       priceAfter: '399.00',
       priceBefore: '499.00',
       img: '../../../assets/2.png',
     },
     {
-      title: 'Valvet Accent Arm Chair',
+      title: 'Clothes iron Panasonic',
       priceAfter: '299.00',
       priceBefore: '399.00',
       img: '../../../assets/3.png',
     },
   ];
-  ngOnInit(): void {}
+
+  productArr:any[]=[];
+
+
+  ngOnInit(): void {
+    this.server.getProductsLimit().subscribe((data)=>{
+      this.productArr = data;
+      console.log(this.productArr);
+      
+    })
+
+
+  }
 }

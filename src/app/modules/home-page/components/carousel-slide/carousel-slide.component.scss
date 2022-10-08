@@ -1,30 +1,23 @@
+$primaryColor: #e99c2e;
+$SecondaryColor: #616060;
+$myText-light: #a09e9c;
+$Bg-color-main: #f8f9fd;
+
+
+
 .btn-m {
   color: #fff;
-  background-color: #e99c2e;
-  border-color: #e99c2e;
+  background-color: $primaryColor;
+  border-color: $primaryColor;
 }
 .btn-m:hover,
 .btn-m:focus,
 .btn-m:active,
 .btn-m.active,
 .open > .dropdown-toggle.btn-m {
-  color: #e99c2e;
-  background-color: #f8f9fd;
-  border-color: #e99c2e;
-}
-
-.btn-s {
-  color: #e99c2e;
-}
-
-.btn-s:hover,
-.btn-s:focus,
-.btn-s:active,
-.btn-s.active,
-.open > .dropdown-toggle.btn-s {
-  color: #e99c2e;
-  background-color: #f8f9fd;
-  border-color: #e99c2e;
+  color: $primaryColor;
+  background-color: $Bg-color-main;
+  border-color: $primaryColor;
 }
 
 .imgHeight {

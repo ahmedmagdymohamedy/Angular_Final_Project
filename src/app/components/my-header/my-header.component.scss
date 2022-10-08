@@ -1,6 +1,7 @@
 $primaryColor: #e99c2e;
 $SecondaryColor: #616060;
-$Bg-color: #a09e9c;
+$myText-light: #a09e9c;
+$Bg-color-main: #f8f9fd;
 
 mat-toolbar {
   justify-content: space-between;
@@ -18,6 +19,7 @@ nav.scrolled {
   background: #0a0a0a;
 }
 .color {
+  background-color: $Bg-color-main;
   .navbar-brand:hover {
     color: black;
   }

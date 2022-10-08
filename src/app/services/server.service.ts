@@ -16,6 +16,12 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + "/products");
   }
 
+  //____get Product Limit 6 Product ______________________
+
+  getProductsLimit(): Observable<any> {
+    return this.httpClient.get(ServerService.BASE_URL + "/products"+"?&_limit=6");
+  }
+
   // ____ get product by id ___
   getProductByID(productID: number): Observable<any> {
     return this.httpClient.get(ServerService.BASE_URL + '/products/' + productID);

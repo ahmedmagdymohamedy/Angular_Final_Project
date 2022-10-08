@@ -4,6 +4,7 @@ import { HomePageComponent } from './home-page.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { CarouselSlideComponent } from './components/carousel-slide/carousel-slide.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CarouselSlideComponent } from './components/carousel-slide/carousel-sli
     CarouselSlideComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
   ]
 })
 
