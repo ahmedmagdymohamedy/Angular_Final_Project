@@ -89,6 +89,15 @@
 
 <h1 class="text-center p-1 txt-secondary display-6">New Arrivals</h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let product of productArr">
+  <app-product-card [product]="product"></app-product-card>
+</div>
+</div>
+</div>
+
+
 
 
 

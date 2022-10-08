@@ -1,5 +1,7 @@
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from 'src/app/services/server.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   user = this.authService.currentuser$;
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService, private server: ServerService) {}
 
   objArr: {}[] = [
     {
@@ -30,5 +32,17 @@ export class HomePageComponent implements OnInit {
       img: '../../../assets/3.png',
     },
   ];
-  ngOnInit(): void {}
+
+  productArr:any[]=[];
+
+
+  ngOnInit(): void {
+    this.server.getProductsLimit().subscribe((data)=>{
+      this.productArr = data;
+      console.log(this.productArr);
+      
+    })
+
+
+  }
 }
