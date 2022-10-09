@@ -8,8 +8,16 @@
             <p class="text">{{product.description}} </p>
         </div>
         <app-star-rate class="mb-2" [rate]="product.rating.rate"></app-star-rate>
+        <div *ngIf="IsWish ; then wish; else card">
+
+        </div>
+        <ng-template #card>
         <a [href]="'/product/'+product.id" class="btn w-100 bg-primary-color text-light fw-semibold btn-hover">see
             more</a>
+        </ng-template>
+        <ng-template #wish>
+            <a [href]="'/product/'+product.id" class="btn w-50 bg-primary-color text-light fw-semibold btn-hover">Add to Cart</a>
+            </ng-template>
     </div>
 
 </div>
