@@ -35,7 +35,7 @@
               <a class="nav-link"><i class="fa-sharp fa-solid fa-gear"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a class="nav-link" routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
             </li>
 
             <ng-container *ngIf="authservice.currentuser$ | async as user; else  loginButton">

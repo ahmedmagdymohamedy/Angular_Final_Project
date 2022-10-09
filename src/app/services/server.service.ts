@@ -33,6 +33,11 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + "/orders");
   }
 
+  getOrdersBYId(userID: number): Observable<any> {
+    return this.httpClient.get(ServerService.BASE_URL + "/orders?userID="+userID);
+  }
+
+
   // ____ posst orders ___
   addToCart(userID: number, product: any): Observable<any> {
     console.log(product);
@@ -49,7 +54,9 @@ export class ServerService {
   // ____ update orders ___
 
   // ____ delete orders ___
-
+  emptyCart() {
+    return this.httpClient.delete(ServerService.BASE_URL + "/orders/empty");
+  }
 
   // _______________________ Orders __________________
   // ____ get orders ___
@@ -76,4 +83,8 @@ export class ServerService {
   generateID(): number {
     return Math.floor(Math.random() * 10000);
   }
+
+
+  // ------------------------cart--------------
+  
 }
