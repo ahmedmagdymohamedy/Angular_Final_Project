@@ -12,6 +12,7 @@ export class WishListComponent implements OnInit {
  WishList:any[]=[];
 //  UserID:number = 0;
 check:boolean=false;
+// IsWish :boolean= true;
 
 checkList()
   {
