@@ -9,6 +9,7 @@ export class ProductCardComponent implements OnInit {
 
 
   @Input() product: any;
+  @Input() IsWish:boolean=false;
 
   constructor() { }
 
