@@ -65,6 +65,11 @@ export class ServerService {
     });
   }
 
+  //__________ get wishlist_____________
+  getWishlist(userID:number): Observable<any> {
+    return this.httpClient.get(ServerService.BASE_URL + "/wishlist?userID="+userID);
+  }
+
   // ____ delete orders ___
 
   // ________________________ Generate Random ID (use it when post new any elment) ___________________

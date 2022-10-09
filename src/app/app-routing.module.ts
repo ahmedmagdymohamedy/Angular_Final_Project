@@ -11,6 +11,7 @@ import {
   redirectLoggedInTo,
 } from '@angular/fire/auth-guard';
 import { PaymentComponent } from './modules/payment-page/components/payment/payment.component';
+import { WishListComponent } from './modules/wish-list/component/wish-list/wish-list.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home']);
 
@@ -54,6 +55,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'wish',
+    component: WishListComponent,
+    loadChildren: () =>
+      import('./modules/wish-list/wish-list.module').then(
+        (m) => m.WishListModule
+      ),
+  },
+  {
     path: 'payment',
     component: PaymentComponent,
     loadChildren: () =>
@@ -61,6 +70,7 @@ const routes: Routes = [
         (m) => m.PaymentPageModule
       ),
   },
+  
 ];
 
 @NgModule({
