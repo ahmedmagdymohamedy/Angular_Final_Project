@@ -1,0 +1,104 @@
+<!-- <h1>products</h1> -->
+<div class="d-flex">
+<div class="card-top container-fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a (click)="filter('')">
+                <img class="img"  src="https://46ba123xc93a357lc11tqhds-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/amazon-alexa-event-sept-2019.jpg" alt="">
+
+            </a>
+            <h5  class="header1">All products</h5>
+
+        </div>
+        <div class="item">
+            <a (click)="filter('electronics')">
+              
+                <img class="img" src="https://image.coolblue.be/1248x535/content/9442d16a126e8df5e319b594891a66b6.jpg?q=50" alt="">
+              
+            </a>
+            <h5 class="header2">Electronics</h5>
+        </div>
+        <div class="item">
+            <a (click)="filter('fashion')">
+                <img class="img" src="https://cf.ltkcdn.net/fashion-history/images/orig/212909-2121x1414-fashionlondoncouple.jpg?q=100" alt="">
+            </a>
+            <h5 class="header3" header>Fashion</h5>
+        </div>
+        <div class="item">
+            
+            <a (click)="filter('jewelery')">
+                <img class="img" src="https://eoouae45rgb.exactdn.com/2022/06/GoldNecklace%40660x550.jpg?strip=all&lossy=1&quality=75&ssl=1.jpg?q=50" alt="">
+                <h5 class="header4" header>Jewllery</h5>
+            </a>
+           
+        </div>
+       
+    </div>
+</div>
+
+</div>
+<hr>
+
+
+
+
+ <div class="container mt-2 d-flex mb-5  ">
+    <div class="row d-flex ">
+       <ng-container *ngFor="let item of filterCategory | filter:searchKey:'title'">
+            <div class="col-md-4 mt-5">
+                <div class="p-3" style="background-color: white; text-align: center;">
+                    <img class="w-100"src={{item.image}} style="height: 150px; object-fit: contain;" alt="product.title">
+                </div>
+            <div class="d-flex flex-column flex-grow-1 p-4 txt-secondary my-card">
+             
+
+            <div class="d-flex flex-column flex-grow-1 p-3 txt-secondary ">
+             
+                
+                    <h6 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;font-size: 23px;">{{item.title}}</h6>
+
+
+              
+                    <div class=" flex-grow-1">
+                        <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;;">{{item.description}} </p>
+                    </div>
+               
+                
+                    <app-star-rate class="mb-2" [rate]="item.rating.rate"></app-star-rate>
+
+              
+                <p class="card-text mr-4 text-success star text font-size:16px">${{item.price}}</p>
+                <a [href]="'/product/'+item.id" class="btn w-100 bg-primary-color text-light fw-semibold btn-hover">see
+                    more</a>
+            </div>
+                </div>
+            
+            </div>
+        
+
+
+
+
+
+        </ng-container> 
+        
+
+    </div>
+
+</div> 
+<!-- 
+<div class="row d-flex ">
+
+<div class="gallery">
+    <div class="content">
+<img src={{item.image}} alt="">
+<h3>{{item.title}}</h3>
+<p>{{item.description}}</p>
+    <h5>2323</h5>
+    
+    <button class="buy-1">see more</button>
+   
+
+
+</div>
+</div> -->

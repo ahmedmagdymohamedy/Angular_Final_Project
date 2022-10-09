@@ -1,3 +1,4 @@
+import { ProductsComponent } from './modules/products/components/products/products.component';
 import { ProductDetailsComponent } from './modules/product-details/product-details/product-details.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -60,6 +61,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/wish-list/wish-list.module').then(
         (m) => m.WishListModule
+      ),
+  },
+  {
+    path: 'products',
+    component: ProductsComponent,
+    loadChildren: () =>
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
       ),
   },
   {
