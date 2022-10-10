@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,11 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + "/orders");
   }
 
+  getOrdersBYId(userID: number): Observable<any> {
+    return this.httpClient.get(ServerService.BASE_URL + "/orders?userID="+userID);
+  }
+
+
   // ____ posst orders ___
   addToCart(userID: number, product: any): Observable<any> {
     console.log(product);
@@ -47,9 +52,13 @@ export class ServerService {
   }
 
   // ____ update orders ___
+  
 
   // ____ delete orders ___
-
+  deleteOrder(id:number) {
+    console.log(id)
+    return this.httpClient.delete(ServerService.BASE_URL + `/orders/${id}`);
+  }
 
   // _______________________ Orders __________________
   // ____ get orders ___
@@ -76,4 +85,8 @@ export class ServerService {
   generateID(): number {
     return Math.floor(Math.random() * 10000);
   }
+
+
+  // ------------------------cart--------------
+  
 }

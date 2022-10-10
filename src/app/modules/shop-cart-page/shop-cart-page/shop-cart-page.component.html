@@ -1,0 +1,46 @@
+
+<ng-container *ngIf="carItemList.length > 0 " >
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th> Product Name </th>
+                            <th> Product Image </th>
+                            <th> Price </th>
+                            <th> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of carItemList">
+                            <td>{{order.product.product.title}}</td>
+                            <td><img src="{{order.product.product.image}}" alt="" srcset=""  style="width: 100px;"></td>
+                            <td>{{order.product.product.price}}</td>
+                            <td><button (click)="deleteItem(order)">Delete</button></td>
+
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                <button class="btn btn-primary">Payment</button>
+                <span>Total ${{total | number : '.2'}}</span>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="carItemList.length == 0 ">
+    <div class="container">
+        <div class="card " style="height: 65vh;">
+            <h5 class="card-tittle">My Cart</h5>
+        </div>
+        <div class="center flex-column">
+            <img src="./assets/empty-shopping-cart.png" alt="" srcset="">
+            <h4>Your Cart is empty!</h4>
+            <h5>Add item to it now</h5>
+            <button class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
