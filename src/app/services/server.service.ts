@@ -55,8 +55,9 @@ export class ServerService {
   
 
   // ____ delete orders ___
-deleteFromWish(ID:number){
-  return this.httpClient.delete(ServerService.BASE_URL+`/wishlist${ID}`)
+deleteFromWish(id:number){
+  console.log(id);
+  return this.httpClient.delete(ServerService.BASE_URL+`/wishlist/${id}`)
 }
   deleteOrder(id:number) {
     console.log(id)
