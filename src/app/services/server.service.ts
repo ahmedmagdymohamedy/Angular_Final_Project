@@ -49,7 +49,9 @@ export class ServerService {
   // ____ update orders ___
 
   // ____ delete orders ___
-
+deleteFromWish(ID:number){
+  return this.httpClient.delete(ServerService.BASE_URL+`/wishlist${ID}`)
+}
 
   // _______________________ Orders __________________
   // ____ get orders ___

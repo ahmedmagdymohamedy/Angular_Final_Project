@@ -10,6 +10,8 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product: any;
   @Input() IsWish:boolean=false;
+  @Input() onClickAddToCard:(productID:number)=>void =()=>{};
+  @Input() onClickRemove:(productID:number)=>void =()=>{};
 
   constructor() { }
 
