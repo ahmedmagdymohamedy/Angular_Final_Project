@@ -1,3 +1,4 @@
+import { ProductsComponent } from './modules/products/components/products/products.component';
 import { ProductDetailsComponent } from './modules/product-details/product-details/product-details.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth-page/componants/login/login.component';
 import { RegistrationComponent } from './modules/auth-page/componants/registration/registration.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
+import { ShopCartPageComponent } from './modules/shop-cart-page/shop-cart-page/shop-cart-page.component';
 import {
   canActivate,
   redirectUnauthorizedTo,
@@ -63,11 +65,27 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'products',
+    component: ProductsComponent,
+    loadChildren: () =>
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+  },
+  {
     path: 'payment',
     component: PaymentComponent,
     loadChildren: () =>
       import('./modules/payment-page/payment-page.module').then(
         (m) => m.PaymentPageModule
+      ),
+  },
+  {
+    path: 'cart',
+    component:  ShopCartPageComponent,
+    loadChildren: () =>
+      import('./modules/shop-cart-page/shop-cart-page.module').then(
+        (m) => m.ShopCartPageModule
       ),
   },
   
