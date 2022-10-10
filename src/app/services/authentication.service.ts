@@ -10,25 +10,21 @@ import { from } from 'rxjs';
 export class AuthenticationService {
 
 
-  currentuser$=authState(this.auth);
-  constructor(private auth:Auth) { }
+  currentuser$ = authState(this.auth);
 
-  login(username:any,password:any)
-  {
-   return from(signInWithEmailAndPassword(this.auth,username,password));
+  constructor(private auth: Auth) { }
+
+  login(username: any, password: any) {
+    return from(signInWithEmailAndPassword(this.auth, username, password));
   }
-  signUp(name:any,email:any,password:any)
-  {
-return from(createUserWithEmailAndPassword(this.auth,email,password)).pipe(
 
-  switchMap(({user})=>updateProfile(user,{displayName:name})));
-
+  signUp(name: any, email: any, password: any) {
+    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+      switchMap(({ user }) => updateProfile(user, { displayName: name })));
   }
-  
 
-  logout()
-  {
+
+  logout() {
     return from(this.auth.signOut());
-
   }
 }

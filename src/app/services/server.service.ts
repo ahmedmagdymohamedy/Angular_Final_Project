@@ -19,7 +19,7 @@ export class ServerService {
   //____get Product Limit 6 Product ______________________
 
   getProductsLimit(): Observable<any> {
-    return this.httpClient.get(ServerService.BASE_URL + "/products"+"?&_limit=6");
+    return this.httpClient.get(ServerService.BASE_URL + "/products" + "?&_limit=6");
   }
 
   // ____ get product by id ___
@@ -34,7 +34,7 @@ export class ServerService {
   }
 
   getOrdersBYId(userID: number): Observable<any> {
-    return this.httpClient.get(ServerService.BASE_URL + "/orders?userID="+userID);
+    return this.httpClient.get(ServerService.BASE_URL + "/orders?userID=" + userID);
   }
 
 
@@ -52,22 +52,24 @@ export class ServerService {
   }
 
   // ____ update orders ___
-  
+
 
   // ____ delete orders ___
-deleteFromWish(ID:number){
-  return this.httpClient.delete(ServerService.BASE_URL+`/wishlist${ID}`)
-}
-  deleteOrder(id:number) {
+  deleteFromWish(ID: number) {
+    return this.httpClient.delete(ServerService.BASE_URL + `/wishlist${ID}`)
+  }
+  deleteOrder(id: number) {
     console.log(id)
     return this.httpClient.delete(ServerService.BASE_URL + `/orders/${id}`);
   }
 
-  // _______________________ Orders __________________
-  // ____ get orders ___
+  // _______________________ Wich list __________________
+  // ____ get Wich list ___
+  getWishlist(userID: number): Observable<any> {
+    return this.httpClient.get(ServerService.BASE_URL + "/wishlist?userID=" + userID);
+  }
 
-
-  // ____ post orders ___
+  // ____ post Wich list ___
   addToWishList(userID: number, product: any): Observable<any> {
     console.log(product);
     return this.httpClient.post(ServerService.BASE_URL + "/wishlist", {
@@ -77,12 +79,9 @@ deleteFromWish(ID:number){
     });
   }
 
-  //__________ get wishlist_____________
-  getWishlist(userID:number): Observable<any> {
-    return this.httpClient.get(ServerService.BASE_URL + "/wishlist?userID="+userID);
-  }
 
   // ____ delete orders ___
+
 
   // ________________________ Generate Random ID (use it when post new any elment) ___________________
   generateID(): number {
@@ -91,5 +90,5 @@ deleteFromWish(ID:number){
 
 
   // ------------------------cart--------------
-  
+
 }
