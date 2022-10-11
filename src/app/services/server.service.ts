@@ -33,7 +33,7 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + "/orders");
   }
 
-  getOrdersBYId(userID: number): Observable<any> {
+  getOrdersBYUserId(userID: number): Observable<any> {
     return this.httpClient.get(ServerService.BASE_URL + "/orders?userID=" + userID);
   }
 
@@ -52,7 +52,9 @@ export class ServerService {
   }
 
   // ____ update orders ___
-
+  updateOrderCount(productId:number,newcount:number){
+    return this.httpClient.put(ServerService.BASE_URL + `/orders?id=${productId}`,newcount)
+  }
 
   // ____ delete orders ___
   deleteFromWish(ID: number) {
