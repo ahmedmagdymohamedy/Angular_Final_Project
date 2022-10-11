@@ -9,6 +9,7 @@
                             <th> Product Name </th>
                             <th> Product Image </th>
                             <th> Price </th>
+                            <th> Quantity </th>
                             <th> Action </th>
                         </tr>
                     </thead>
@@ -16,11 +17,11 @@
                         <tr *ngFor="let order of carItemList">
                             <td class="align-baseline"><img src="{{order.product.product.image}}" alt="" srcset=""  style="width: 100px;"></td>
                             <td class="align-baseline">{{order.product.product.title}}</td>
+                            <td class="align-baseline">$ {{order.product.product.price * order.product.count}}</td>
                             <td class="align-baseline">
-                                $ {{order.product.product.price * order.product.count}}
                                 <button (click)="plusValue(order)"><i class="fa fa-plus"></i></button>  
                                 <span>{{order.product.count}}</span>
-                                <button (click)="minusValue(order)"><i class="fa fa-minus"></i></button>  
+                                <button (click)="minusValue(order)"><i class="fa fa-minus"></i></button>
                             </td>
                             <td class="align-baseline"><button class="btn btn-delete" (click)="deleteItem(order)"><i class="fa fa-trash"></i></button></td>
 
