@@ -36,10 +36,8 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + '/orders');
   }
 
-  getOrdersBYId(userID: number): Observable<any> {
-    return this.httpClient.get(
-      ServerService.BASE_URL + '/orders?userID=' + userID
-    );
+  getOrdersBYUserId(userID: number): Observable<any> {
+    return this.httpClient.get(ServerService.BASE_URL + "/orders?userID=" + userID);
   }
 
   // ____ posst orders ___
@@ -56,6 +54,7 @@ export class ServerService {
   }
 
   // ____ update orders ___
+
 
   // ____ delete orders ___
   deleteFromWish(id: number) {
