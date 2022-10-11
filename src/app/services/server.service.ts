@@ -36,7 +36,7 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + '/orders');
   }
 
-  getOrdersBYId(userID: number): Observable<any> {
+  getOrdersBYUserId(userID: number): Observable<any> {
     return this.httpClient.get(ServerService.BASE_URL + "/orders?userID=" + userID);
   }
 
