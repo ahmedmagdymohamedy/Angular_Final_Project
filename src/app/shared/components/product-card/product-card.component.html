@@ -8,11 +8,18 @@
     />
   </div>
   <div class="d-flex flex-column flex-grow-1 p-4 txt-secondary">
-    <h6 class="text">{{ product.title }}</h6>
+    <h6 class="text header">{{ product.title }}</h6>
     <div class="flex-grow-1">
-      <p class="text">{{ product.description }}</p>
+      <p class="text price">{{ product.description }}</p>
     </div>
-    <app-star-rate class="mb-2" [rate]="product.rating.rate"></app-star-rate>
+    
+     <div class="d-flex">
+      <app-star-rate class="mb-2" [rate]="product.rating.rate"></app-star-rate>&nbsp;&nbsp;&nbsp;&nbsp;
+      <p class="text  p">${{ product.price }}</p>
+     </div>
+   
+ 
+
     <div *ngIf="IsWish; then wish; else card"></div>
     <ng-template #card>
       <a

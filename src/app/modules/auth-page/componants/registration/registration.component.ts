@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { switchMap } from 'rxjs/operators';
 
 
 export function passwordsMatchValidator(): ValidatorFn {

@@ -1,76 +1,75 @@
 <!-- <h1>products</h1> -->
-<div class="d-flex">
-    <div class="card-top container-fluid">
-        <div class="container d-flex">
-            <div class="item">
-                <a (click)="filter('')">
-                    <img class="img"
-                        src="https://46ba123xc93a357lc11tqhds-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/amazon-alexa-event-sept-2019.jpg"
-                        alt="">
 
-                </a>
-                <h5 class="header1">All products</h5>
-
-            </div>
-            <div class="item">
-                <a (click)="filter('electronics')">
-
-                    <img class="img"
-                        src="https://image.coolblue.be/1248x535/content/9442d16a126e8df5e319b594891a66b6.jpg?q=50"
-                        alt="">
-
-                </a>
-                <h5 class="header2">Electronics</h5>
-            </div>
-            <div class="item">
-                <a (click)="filter('fashion')">
-                    <img class="img"
-                        src="https://cf.ltkcdn.net/fashion-history/images/orig/212909-2121x1414-fashionlondoncouple.jpg?q=100"
-                        alt="">
-                </a>
-                <h5 class="header3" header>Fashion</h5>
-            </div>
-            <div class="item">
-
-                <a (click)="filter('jewelery')">
-                    <img class="img"
-                        src="https://eoouae45rgb.exactdn.com/2022/06/GoldNecklace%40660x550.jpg?strip=all&lossy=1&quality=75&ssl=1.jpg?q=50"
-                        alt="">
-                    <h5 class="header4" header>Jewllery</h5>
-                </a>
-
-            </div>
-
-        </div>
+<div class="col-3  ">
+    <div class="form-group ">
+        <input type="text"  class="form-control search" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
     </div>
-
 </div>
-<hr>
 
+<div class="d-flex ">
+<div class="wrapper ">
+    <div class="sidebar">
+        <ul>
+            <li> 
+                <div class="item">
+                    <a (click)="filter('')">
+                       
+                            <h5 class="header1">All products</h5>
 
-
-
-<div class="container mt-2 d-flex mb-5  ">
-    <div class="row d-flex ">
-        <app-product-card class="col-12 col-md-4 col-lg-3 "
-            *ngFor="let item of filterCategory | filter:searchKey:'title'" [product]="item">
-        </app-product-card>
-    </div>
-
-</div>
-<!-- 
-<div class="row d-flex ">
-
-<div class="gallery">
-    <div class="content">
-<img src={{item.image}} alt="">
-<h3>{{item.title}}</h3>
-<p>{{item.description}}</p>
-    <h5>2323</h5>
+                    </a>
     
-    <button class="buy-1">see more</button>
-   
+                </div>
+        </li>
+            <li>
+                <div class="item" >
+                    <a (click)="filter('electronics')">
+    
+                       
+                            <h5 class="header2">Electronics</h5>
 
+                    </a>
+                </div>
+            
+            </li>
+            <li>
+                <div class="item">
+                    <a (click)="filter('fashion')">
+                        <h5 class="header3" header>Fashion</h5>
+
+                    </a>
+                </div>
+            </li>
+            <li>
+                
+                <div class="item">
+
+                    <a (click)="filter('jewelery')">
+                       
+                        <h5 class="header4" header>Jewllery</h5>
+                    </a>
+    
+                </div>            
+            
+            </li>
+  
+        </ul> 
+       
+    </div>
+    <div class="container mt-2 d-flex mb-5  ">
+        <div class="row d-flex ">
+            <app-product-card class="col-12 col-md-4 col-lg-3 "
+                *ngFor="let item of filterCategory | filter:searchKey:'title'" [product]="item">
+            </app-product-card>
+        </div>
+    
+    </div>
+</div>
 
 </div>
-</div> -->
+
+
+
+
+
+
+

@@ -8,20 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-
+  public totalItem : number = 0;
+  public searchTerm !: string;
   public productList:any;
   public filterCategory:any;
+
+
   searchKey:string ="";
-  public searchTerm !: any;
-  constructor(private productService : ProductsSearchService,private apiservice:ServerService) { }
-  public totalItem : number = 0;
+  
+  constructor(private cartService : ProductsSearchService,private productService : ProductsSearchService,private apiservice:ServerService) { }
 
   ngOnInit(): void {
+    // this.cartService.getProducts()
+    // .subscribe(res=>{
+    //   this.totalItem = res.length;
+    // })
     
     this.apiservice.getProducts()
     .subscribe(res=>{
       this.productList=res;
       this.filterCategory=res;
+     
+    
     
       this.productList.forEach((a:any) => {
         if(a.category==="women's clothing" || a.category==="men's clothing")
@@ -45,6 +53,19 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
- 
+  // filterPrice(price:string){
+  //   this.filterCategory = this.productList
+  //   .filter((a:any)=>{
+  //     if(a.price == price || price==''){
+  //       return a;
+  //     }
+  //   })
+  // }
+
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.cartService.search.next(this.searchTerm);
+  }
 
 }
