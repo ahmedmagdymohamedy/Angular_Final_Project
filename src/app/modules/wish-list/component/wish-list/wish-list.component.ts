@@ -28,13 +28,18 @@ checkList()
       
   }
 
-  ngOnInit(): void {
-
+  ReGetWishlist()
+  {
     this.server.getWishlist(3).subscribe(data=>{
       this.WishList=data;
       this.checkList()
       console.log(this.WishList)
     });
+  }
+
+  ngOnInit(): void {
+
+    this.ReGetWishlist();
     
     
   }
@@ -50,11 +55,15 @@ checkList()
   
   onClickRemove  =(ID :number)=>{
     for(let item of this.WishList){
-      if (ID==item.id)
+      console.log(ID)
+      if (ID == item.product.id)
       {
-        console.log(item)
-        this.server.deleteFromWish(item)
+        console.log(item.product.id)
+        this.server.deleteFromWish(item.id).subscribe(()=>{
+          this.ReGetWishlist()
+        })
       }
     }
+    this
   }
 }
