@@ -23,7 +23,6 @@ export class ShopCartPageComponent implements OnInit {
         this.calcTotal()
         console.log(item.product.count);
       }
-      this.server.updateOrderCount(3,item.product.count)
     }
   };
   
