@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carousel-slide',
@@ -6,7 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./carousel-slide.component.scss'],
 })
 export class CarouselSlideComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   @Input() props: any = {};
   ngOnInit(): void {}
+
+  goToProductPage() {
+    this.router.navigate(['/products']);
+  }
 }

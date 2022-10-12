@@ -14,16 +14,16 @@ export class HomePageComponent implements OnInit {
 
   objArr: {}[] = [
     {
-      title: 'Mapple Wood Accent Chair',
+      title: ' Samsung 860 EVO SATA III 2.5',
       priceAfter: '199.00',
       priceBefore: '299.00',
-      img: '../../../assets/1.png',
+      img: '../../../assets/2.png',
     },
     {
-      title: 'Samsung 860 EVO SATA III 2.5',
+      title: 'Mapple Wood Accent Chair',
       priceAfter: '399.00',
       priceBefore: '499.00',
-      img: '../../../assets/2.png',
+      img: '../../../assets/1.png',
     },
     {
       title: 'Clothes iron Panasonic',

@@ -7,7 +7,7 @@ import { catchError, Observable } from 'rxjs';
 })
 export class ServerService {
   static readonly BASE_URL: string = 'http://localhost:3000';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   // _______________________ Products __________________
   // ____ get product ___
@@ -19,7 +19,7 @@ export class ServerService {
 
   getProductsLimit(): Observable<any> {
     return this.httpClient.get(
-      ServerService.BASE_URL + '/products' + '?&_limit=6'
+      ServerService.BASE_URL + '/products' + '?&_limit=8'
     );
   }
 
@@ -37,13 +37,15 @@ export class ServerService {
   }
 
   getOrdersBYUserId(userID: number): Observable<any> {
-    return this.httpClient.get(ServerService.BASE_URL + "/orders?userID=" + userID);
+    return this.httpClient.get(
+      ServerService.BASE_URL + '/orders?userID=' + userID
+    );
   }
 
   // ____ post orders ___
   addToCart(userID: number, product: any, callBackFunction: Function): void {
     let isFound: boolean = false;
-    this.getOrders().subscribe(orders => {
+    this.getOrders().subscribe((orders) => {
       for (let i = 0; i < orders.length; i++) {
         if (orders[i].product.product.id == product.id) {
           isFound = true;
@@ -53,28 +55,24 @@ export class ServerService {
 
       console.log(isFound);
 
-
       if (!isFound) {
-        callBackFunction(this.httpClient.post(ServerService.BASE_URL + '/orders', {
-          id: this.generateID(),
-          userID: userID,
-          product: {
-            product: product,
-            count: 1,
-          },
-        }));
+        callBackFunction(
+          this.httpClient.post(ServerService.BASE_URL + '/orders', {
+            id: this.generateID(),
+            userID: userID,
+            product: {
+              product: product,
+              count: 1,
+            },
+          })
+        );
       } else {
         callBackFunction(null);
       }
-
-
-    })
-
-
+    });
   }
 
   // ____ update orders ___
-
 
   // ____ delete orders ___
   deleteOrder(id: number) {
