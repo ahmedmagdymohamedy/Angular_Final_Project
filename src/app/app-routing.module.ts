@@ -14,6 +14,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { PaymentComponent } from './modules/payment-page/components/payment/payment.component';
 import { WishListComponent } from './modules/wish-list/component/wish-list/wish-list.component';
+import { PaymentDoneComponent } from './modules/payment-page/components/payment/payment-done/payment-done.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home']);
 
@@ -79,16 +80,20 @@ const routes: Routes = [
       import('./modules/payment-page/payment-page.module').then(
         (m) => m.PaymentPageModule
       ),
+
   },
   {
     path: 'cart',
-    component:  ShopCartPageComponent,
+    component: ShopCartPageComponent,
     loadChildren: () =>
       import('./modules/shop-cart-page/shop-cart-page.module').then(
         (m) => m.ShopCartPageModule
       ),
   },
-  
+  {
+    path: "paymentdone", component
+      : PaymentDoneComponent
+  }
 ];
 
 @NgModule({

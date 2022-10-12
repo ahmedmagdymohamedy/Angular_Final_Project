@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServerService {
   static readonly BASE_URL: string = 'http://localhost:3000';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private auth: AuthenticationService) { }
 
   // _______________________ Products __________________
   // ____ get product ___
@@ -33,17 +34,19 @@ export class ServerService {
   // _______________________ Orders __________________
   // ____ get orders ___
   getOrders(): Observable<any> {
-    return this.httpClient.get(ServerService.BASE_URL + '/orders');
+    return this.httpClient.get(ServerService.BASE_URL + `/orders?userID=${this.auth.userID}`);
   }
 
-  getOrdersBYUserId(userID: number): Observable<any> {
+  getOrdersBYUserId(): Observable<any> {
+    console.log(this.auth.userID);
+
     return this.httpClient.get(
-      ServerService.BASE_URL + '/orders?userID=' + userID
+      ServerService.BASE_URL + '/orders?userID=' + this.auth.userID
     );
   }
 
   // ____ post orders ___
-  addToCart(userID: number, product: any, callBackFunction: Function): void {
+  addToCart(product: any, callBackFunction: Function): void {
     let isFound: boolean = false;
     this.getOrders().subscribe((orders) => {
       for (let i = 0; i < orders.length; i++) {
@@ -59,7 +62,7 @@ export class ServerService {
         callBackFunction(
           this.httpClient.post(ServerService.BASE_URL + '/orders', {
             id: this.generateID(),
-            userID: userID,
+            userID: this.auth.userID,
             product: {
               product: product,
               count: 1,
@@ -80,20 +83,31 @@ export class ServerService {
     return this.httpClient.delete(ServerService.BASE_URL + `/orders/${id}`);
   }
 
+
+  //// Delete All Orders
+  deleteAllOrder(){
+    console.log(this.auth.userID);
+    return this.httpClient.delete(ServerService.BASE_URL + `/orders?userID=${this.auth.userID}`
+    
+    )
+    
+    
+  }
+
   // _______________________ Wich list __________________
   // ____ get Wich list ___
-  getWishlist(userID: number): Observable<any> {
+  getWishlist(): Observable<any> {
     return this.httpClient.get(
-      ServerService.BASE_URL + '/wishlist?userID=' + userID
+      ServerService.BASE_URL + '/wishlist?userID=' + this.auth.userID
     );
   }
 
   // ____ post Wich list ___
-  addToWishList(userID: number, product: any): Observable<any> {
+  addToWishList(product: any): Observable<any> {
     console.log(product);
     return this.httpClient.post(ServerService.BASE_URL + '/wishlist', {
       id: this.generateID(),
-      userID: userID,
+      userID: this.auth.userID,
       product: product,
     });
   }

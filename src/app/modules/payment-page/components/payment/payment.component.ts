@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServerService } from 'src/app/services/server.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -19,8 +20,9 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     private formBulider: FormBuilder,
-    private server: ServerService
-  ) {}
+    private server: ServerService,
+    private router: Router,
+  ) { }
 
   paymentForm = this.formBulider.group({
     fullName: [
@@ -90,9 +92,13 @@ export class PaymentComponent implements OnInit {
   get cvv() {
     return this.paymentForm.get('cvv');
   }
+  GoToPaymentDone() {
+    this.router.navigate(['/paymentdone'])
+    this.server.deleteAllOrder()
+  }
 
   ngOnInit(): void {
-    this.server.getOrdersBYUserId(3).subscribe((e) => {
+    this.server.getOrdersBYUserId().subscribe((e) => {
       this.orders = e;
       this.reCalculateTotal();
     });

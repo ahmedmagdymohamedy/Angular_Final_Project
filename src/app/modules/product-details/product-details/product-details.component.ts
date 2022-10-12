@@ -40,10 +40,11 @@ export class ProductDetailsComponent implements OnInit {
 
   toggolToCard() {
     if (!this.isOnCart) {
-      this.server.addToCart(3, this.product, (e: any) => {
+      this.server.addToCart(this.product, (e: any) => {
+        this.isOnCart = true;
         e?.subscribe((e: any) => {
-          this.orderDetails = e;
-          this.isOnCart = true;
+          if (e != null)
+            this.orderDetails = e;
         }
         )
       });
@@ -58,7 +59,7 @@ export class ProductDetailsComponent implements OnInit {
 
   toggolToWishList() {
     if (!this.isOnWishList) {
-      this.server.addToWishList(3, this.product).subscribe(e => {
+      this.server.addToWishList(this.product).subscribe(e => {
         this.isOnWishList = true;
       })
     }

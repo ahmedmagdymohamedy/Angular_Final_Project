@@ -10,13 +10,15 @@ import { observable } from 'rxjs';
 })
 export class ShopCartPageComponent implements OnInit {
 
-  constructor(private server: ServerService, private router: Router , private authserver: AuthenticationService) {
+  constructor(private server: ServerService, private router: Router, private authserver: AuthenticationService) {
 
   }
   userID = this.authserver.currentuser$
   carItemList: any[] = [];
   total: number = 0;
   CartQuantityNumber: number = 1;
+
+  isLoading: boolean = false;
 
   plusValue(order: any) {
     for (let item of this.carItemList) {
@@ -51,7 +53,7 @@ export class ShopCartPageComponent implements OnInit {
     this.router.navigate(['payment']);
   }
   regetOrder() {
-    this.server.getOrdersBYUserId(3).subscribe((data) => {
+    this.server.getOrdersBYUserId().subscribe((data) => {
       this.carItemList = data
       this.total = 0
       this.calcTotal()
@@ -61,6 +63,11 @@ export class ShopCartPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.regetOrder()
+    setTimeout(() => {
+      this.authserver.updateUseID();
+      this.regetOrder()
+      this.isLoading = true;
+    }, 1000);
 
   }
 

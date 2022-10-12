@@ -16,6 +16,8 @@ export class WishListComponent implements OnInit {
   product: any;
   check: boolean = false;
 
+  isLoading: boolean = false;
+
   checkList() {
     if (this.WishList.length != 0) {
       this.check = true;
@@ -26,17 +28,18 @@ export class WishListComponent implements OnInit {
   }
 
   ReGetWishlist() {
-    this.server.getWishlist(3).subscribe(data => {
+    this.server.getWishlist().subscribe(data => {
       this.WishList = data;
       this.checkList()
-      console.log(this.WishList)
     });
   }
 
   ngOnInit(): void {
-
     this.ReGetWishlist();
-
+    setTimeout(() => {
+      this.ReGetWishlist();
+      this.isLoading = true;
+    }, 1000);
 
   }
 
