@@ -51,6 +51,11 @@ $Bg-color-main: #f8f9fd;
         font-size: 1rem;
         margin-left: 10px;
     }
+    .img{
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
     .btn-delete{
         background-color: transparent !important;
         color:$primaryColor !important;
@@ -88,6 +93,15 @@ $Bg-color-main: #f8f9fd;
         
     }
 }
-
+.quanitity-number{
+    width: 20px;
+}
+.btn-quantity-controll{
+    border:$primaryColor 1px solid !important;
+    margin: 0 25px;
+}
+.fa-plus,.fa-minus{
+    color: $primaryColor;
+}
 
 

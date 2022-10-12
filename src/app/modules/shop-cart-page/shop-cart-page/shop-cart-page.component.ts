@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ServerService } from 'src/app/services/server.service';
-
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { observable } from 'rxjs';
 @Component({
   selector: 'app-shop-cart-page',
   templateUrl: './shop-cart-page.component.html',
@@ -9,9 +10,10 @@ import { ServerService } from 'src/app/services/server.service';
 })
 export class ShopCartPageComponent implements OnInit {
 
-  constructor(private server: ServerService, private router: Router) {
+  constructor(private server: ServerService, private router: Router , private authserver: AuthenticationService) {
 
   }
+  userID = this.authserver.currentuser$
   carItemList: any[] = [];
   total: number = 0;
   CartQuantityNumber: number = 1;
