@@ -1,27 +1,27 @@
 <div class="d-flex flex-column m-4 my-card shadow-sm rounded-2" style="width: 16rem; height: 420px">
-    <div class="p-3" style="background-color: white; text-align: center">
-        <img class="w-100" [src]="product.image" style="height: 150px; object-fit: contain" alt="product.title" />
+  <div class="p-3" style="background-color: white; text-align: center">
+    <img class="w-100" [src]="product.image" style="height: 150px; object-fit: contain" alt="product.title" />
+  </div>
+  <div class="d-flex flex-column flex-grow-1 p-4 txt-secondary">
+    <h6 class="text">{{ product.title }}</h6>
+    <div class="flex-grow-1">
+      <p class="text">{{ product.description }}</p>
     </div>
-    <div class="d-flex flex-column flex-grow-1 p-4 txt-secondary">
-        <h6 class="text">{{ product.title }}</h6>
-        <div class="flex-grow-1">
-            <p class="text">{{ product.description }}</p>
+    <app-star-rate class="mb-2" [rate]="product.rating.rate"></app-star-rate>
+    <div *ngIf="IsWish; then wish; else card"></div>
+    <ng-template #card>
+      <a [href]="'/product/' + product.id" class="btn w-100 bg-primary-color text-light fw-semibold btn-hover">see
+        more</a>
+    </ng-template>
+    <ng-template #wish>
+      <div class="row" style="height: 40px">
+        <div class="col-9 ps-2 h-100">
+          <a (click)="onClickAddToCard(product.id)"
+            class="btn w-100 mb-1 bg-primary-color text-light fw-semibold btn-hover h-100">Add to Cart</a>
         </div>
-        <app-star-rate class="mb-2" [rate]="product.rating.rate"></app-star-rate>
-        <div *ngIf="IsWish; then wish; else card"></div>
-        <ng-template #card>
-            <a [href]="'/product/' + product.id" class="btn w-100 bg-primary-color text-light fw-semibold btn-hover">see
-                more</a>
-        </ng-template>
-        <ng-template #wish>
-            <div class="row" style="height: 40px">
-                <div class="col-9 ps-2 h-100">
-                    <a (click)="onClickAddToCard(product.id)"
-                        class="btn w-100 mb-1 bg-primary-color text-light fw-semibold btn-hover h-100">Add to Cart</a>
-                </div>
-                <a (click)="onClickRemove(product.id)" class="btn col-3 btn-outline-danger fw-semibold h-100"><i
-                        class="fa-solid fa-trash-can"></i></a>
-            </div>
-        </ng-template>
-    </div>
+        <a (click)="onClickRemove(product.id)" class="btn col-3 btn-outline-danger fw-semibold h-100"><i
+            class="fa-solid fa-trash-can"></i></a>
+      </div>
+    </ng-template>
+  </div>
 </div>

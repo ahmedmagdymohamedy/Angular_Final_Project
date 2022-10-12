@@ -9,22 +9,30 @@
                             <th> Product Name </th>
                             <th> Product Image </th>
                             <th> Price </th>
+                            <th> Quantity </th>
                             <th> Action </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let order of carItemList">
-                            <td>{{order.product.product.title}}</td>
-                            <td><img src="{{order.product.product.image}}" alt="" srcset=""  style="width: 100px;"></td>
-                            <td>{{order.product.product.price}}</td>
-                            <td><button (click)="deleteItem(order)">Delete</button></td>
+                            <td class="align-baseline"><img src="{{order.product.product.image}}" alt="" srcset=""  class="img"></td>
+                            <td class="align-baseline">{{order.product.product.title}}</td>
+                            <td class="align-baseline">$ {{order.product.product.price * order.product.count | number : '.2'}}</td>
+                            <td class="align-baseline">
+                                <button (click)="plusValue(order)" class="btn btn-quantity-controll" ><i class="fa fa-plus"></i></button>  
+                                <span class="quanitity-number">{{order.product.count}}</span>
+                                <button (click)="minusValue(order)" class="btn btn-quantity-controll"><i class="fa fa-minus"></i></button>
+                            </td>
+                            <td class="align-baseline"><button class="btn btn-delete" (click)="deleteItem(order)"><i class="fa fa-trash"></i></button></td>
 
                         </tr>
                     </tbody>
                     
                 </table>
-                <button class="btn btn-primary">Payment</button>
-                <span>Total ${{total | number : '.2'}}</span>
+                <div class="payment-control">
+                    <button class="btn btn-payment" (click)="goToPaymentScreen()">Payment</button>
+                    <span class=".col-lg-6 ">Total $ {{total | number : '.2'}}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -40,7 +48,7 @@
             <img src="./assets/empty-shopping-cart.png" alt="" srcset="">
             <h4>Your Cart is empty!</h4>
             <h5>Add item to it now</h5>
-            <button class="btn btn-primary">Shop Now</button>
+            <button class="btn btn-primary" (click)="goToProductsScreen()">Shop Now</button>
         </div>
     </div>
 </ng-container>

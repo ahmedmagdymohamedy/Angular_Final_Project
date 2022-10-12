@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { switchMap } from 'rxjs/operators';
 
 
 export function passwordsMatchValidator(): ValidatorFn {
@@ -49,7 +48,10 @@ export class RegistrationComponent implements OnInit {
   get confirmPassword() { return this.signupForm.get('confirmPassword'); }
 
   submit() {
-    if (!this.signupForm.valid) { return; }
+    if (!this.signupForm.valid)
+     {
+       return;
+     }
 
     const { name, email, password } = this.signupForm.value;
     this.authservice.signUp(name, email, password).pipe(
