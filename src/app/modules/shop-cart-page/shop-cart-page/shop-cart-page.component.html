@@ -15,13 +15,13 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let order of carItemList">
-                            <td class="align-baseline"><img src="{{order.product.product.image}}" alt="" srcset=""  style="width: 100px;"></td>
+                            <td class="align-baseline"><img src="{{order.product.product.image}}" alt="" srcset=""  class="img"></td>
                             <td class="align-baseline">{{order.product.product.title}}</td>
-                            <td class="align-baseline">$ {{order.product.product.price * order.product.count}}</td>
+                            <td class="align-baseline">$ {{order.product.product.price * order.product.count | number : '.2'}}</td>
                             <td class="align-baseline">
-                                <button (click)="plusValue(order)"><i class="fa fa-plus"></i></button>  
-                                <span>{{order.product.count}}</span>
-                                <button (click)="minusValue(order)"><i class="fa fa-minus"></i></button>
+                                <button (click)="plusValue(order)" class="btn btn-quantity-controll" ><i class="fa fa-plus"></i></button>  
+                                <span class="quanitity-number">{{order.product.count}}</span>
+                                <button (click)="minusValue(order)" class="btn btn-quantity-controll"><i class="fa fa-minus"></i></button>
                             </td>
                             <td class="align-baseline"><button class="btn btn-delete" (click)="deleteItem(order)"><i class="fa fa-trash"></i></button></td>
 
