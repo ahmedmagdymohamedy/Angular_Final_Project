@@ -145,10 +145,10 @@
             </div>
           </div>
 
-          <input (click)="GoToPaymentDone()" type="submit" value="Continue to checkout"
+          <input (click)="GoToPaymentDone()" [disabled]="paymentForm.invalid" type="submit" value="Continue to checkout"
             class="btn" />
         </form>
-        <!-- [disabled]="paymentForm.invalid"  -->
+
         <!-- Form End  -->
       </div>
     </div>
