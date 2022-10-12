@@ -7,25 +7,31 @@ import {
   Validators,
 } from '@angular/forms';
 
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-
   orders: any = [];
   total: number = 0;
 
-  constructor(private formBulider: FormBuilder, private server: ServerService) { }
+  constructor(
+    private formBulider: FormBuilder,
+    private server: ServerService
+  ) {}
 
   paymentForm = this.formBulider.group({
-    fullName: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]],
+    fullName: [
+      '',
+      [Validators.required, Validators.pattern('[A-Za-z\\s]{3,}')],
+    ],
     email: [
       '',
       [
         Validators.required,
-        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+        Validators.pattern("^([a-zA-Z0-9._%+-]+)@([a-z0-9.-]+)\.(com|eg)$"),
       ],
     ],
     addressAll: this.formBulider.group({
@@ -35,7 +41,7 @@ export class PaymentComponent implements OnInit {
       zipCode: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
     }),
     cardName: ['', Validators.required],
-    cardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16}$')]],
+    cardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$')]],
     expMonth: ['', [Validators.required, Validators.pattern('^[0-9]{2}$')]],
     expYear: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]],
     cvv: ['', [Validators.required, Validators.pattern('^[0-9]{3}$')]],
@@ -86,12 +92,10 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.server.getOrdersBYUserId(3).subscribe(e => {
+    this.server.getOrdersBYUserId(3).subscribe((e) => {
       this.orders = e;
-      this.reCalculateTotal()
-    })
-
+      this.reCalculateTotal();
+    });
   }
 
   reCalculateTotal() {

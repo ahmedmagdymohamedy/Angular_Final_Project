@@ -26,7 +26,7 @@
                   >Full Name is required
                 </small>
                 <small class="text-danger" *ngIf="fullName?.errors?.['pattern']"
-                  >min length at least 3
+                  >Full Name invalid
                 </small>
               </div>
 
@@ -44,7 +44,7 @@
                   >Email is required
                 </small>
                 <small class="text-danger" *ngIf="email?.errors?.['pattern']"
-                  >Please Enter Right Email
+                  >Email invalid
                 </small>
               </div>
 
