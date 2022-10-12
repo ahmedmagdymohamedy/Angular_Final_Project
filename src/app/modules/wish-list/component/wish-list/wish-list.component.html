@@ -6,13 +6,9 @@
       <h2 class="col-4 mt-3 mb-3 h1color">Hello To Your Wish WishList</h2>
     </div>
     <div class="row">
-      <div *ngFor="let whishitem of WishList" class="col-4">
-        <app-product-card
-          [product]="whishitem.product"
-          [IsWish]="true"
-          [onClickAddToCard]="onClickAddToCard"
-          [onClickRemove]="onClickRemove"
-        ></app-product-card>
+      <div *ngFor="let whishitem of WishList" class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <app-product-card [product]="whishitem.product" [IsWish]="true" [onClickAddToCard]="onClickAddToCard"
+          [onClickRemove]="onClickRemove"></app-product-card>
       </div>
     </div>
   </div>
