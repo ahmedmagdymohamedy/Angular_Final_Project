@@ -26,8 +26,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MyHeaderComponent,
     LoginComponent,
     RegistrationComponent,
-    FooterComponent
-
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,10 +44,10 @@ import { FooterComponent } from './components/footer/footer.component';
     HotToastModule.forRoot(),
     MatMenuModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [
-  ]
+  exports: [],
 })
-export class AppModule { }
+export class AppModule {}

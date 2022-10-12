@@ -3,6 +3,10 @@ $SecondaryColor: #616060;
 $myText-light: #A6A4A2;
 $Bg-color-main: #f8f9fd;
 
+.is-invalid {
+  border: 1px solid rgb(255, 0, 0) !important;
+}
+
 .row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
