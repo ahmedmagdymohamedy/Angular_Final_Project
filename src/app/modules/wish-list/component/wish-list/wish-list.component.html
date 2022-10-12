@@ -7,8 +7,8 @@
     </div>
     <div class="row">
       <div *ngFor="let whishitem of WishList" class="col-sm-12 col-md-6 col-lg-3">
-        <app-product-card [product]="whishitem.product" [IsWish]="true" [onClickAddToCard]="onClickAddToCard"
-          [onClickRemove]="onClickRemove"></app-product-card>
+        <app-product-card [product]="whishitem.product" [onClickRemove]="onClickRemove">
+        </app-product-card>
       </div>
     </div>
   </div>

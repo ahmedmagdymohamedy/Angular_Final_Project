@@ -15,8 +15,11 @@ export class ProductDetailsComponent implements OnInit {
   productID: number = 0;
   product: any = null;
 
-  isOnWishList: boolean = false;
   isOnCart: boolean = false;
+  orderDetails: any = null;
+
+  isOnWishList: boolean = false;
+
 
   otherProducts: any[] = [];
 
@@ -37,8 +40,18 @@ export class ProductDetailsComponent implements OnInit {
 
   toggolToCard() {
     if (!this.isOnCart) {
-      this.server.addToCart(3, this.product).subscribe(e => {
-        this.isOnCart = true;
+      this.server.addToCart(3, this.product, (e: any) => {
+        e?.subscribe((e: any) => {
+          this.orderDetails = e;
+          this.isOnCart = true;
+        }
+        )
+      });
+    } else {
+      this.server.deleteOrder(this.orderDetails.id).subscribe(e => {
+        console.log(e);
+
+        this.isOnCart = false;
       })
     }
   }

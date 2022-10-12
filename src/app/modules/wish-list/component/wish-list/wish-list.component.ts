@@ -10,28 +10,24 @@ import { ServerService } from 'src/app/services/server.service';
 })
 export class WishListComponent implements OnInit {
 
-  constructor(private server:ServerService) { }
- WishList:any[]=[];
-//  UserID:number = 0;
- product:any;
-check:boolean=false;
-// IsWish :boolean= true;
-IsInCart:boolean=false;
+  constructor(private server: ServerService) { }
+  WishList: any[] = [];
 
-checkList()
-  {
-    if( this.WishList.length!=0){
-      this.check=true;
+  product: any;
+  check: boolean = false;
+
+  checkList() {
+    if (this.WishList.length != 0) {
+      this.check = true;
       console.log("true");
     }
-      
-      
+
+
   }
 
-  ReGetWishlist()
-  {
-    this.server.getWishlist(3).subscribe(data=>{
-      this.WishList=data;
+  ReGetWishlist() {
+    this.server.getWishlist(3).subscribe(data => {
+      this.WishList = data;
       this.checkList()
       console.log(this.WishList)
     });
@@ -40,26 +36,17 @@ checkList()
   ngOnInit(): void {
 
     this.ReGetWishlist();
-    
-    
+
+
   }
-  onClickAddToCard  =(productID :number)=>{
-    for(let item of this.WishList){
-      if(productID==item.product.id){
-    this.server.addToCart(3,item.product).subscribe(w=>{
-      this.IsInCart=true;
-    })
-    }
-    }
-  }
-  
-  onClickRemove  =(ID :number)=>{
-    for(let item of this.WishList){
+
+
+  onClickRemove = (ID: number) => {
+    for (let item of this.WishList) {
       console.log(ID)
-      if (ID == item.product.id)
-      {
+      if (ID == item.product.id) {
         console.log(item.product.id)
-        this.server.deleteFromWish(item.id).subscribe(()=>{
+        this.server.deleteFromWish(item.id).subscribe(() => {
           this.ReGetWishlist()
         })
       }

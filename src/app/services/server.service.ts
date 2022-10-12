@@ -7,7 +7,7 @@ import { catchError, Observable } from 'rxjs';
 })
 export class ServerService {
   static readonly BASE_URL: string = 'http://localhost:3000';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   // _______________________ Products __________________
   // ____ get product ___
@@ -40,28 +40,43 @@ export class ServerService {
     return this.httpClient.get(ServerService.BASE_URL + "/orders?userID=" + userID);
   }
 
-  // ____ posst orders ___
-  addToCart(userID: number, product: any): Observable<any> {
-    console.log(product);
-    return this.httpClient.post(ServerService.BASE_URL + '/orders', {
-      id: this.generateID(),
-      userID: userID,
-      product: {
-        product: product,
-        count: 1,
-      },
-    });
+  // ____ post orders ___
+  addToCart(userID: number, product: any, callBackFunction: Function): void {
+    let isFound: boolean = false;
+    this.getOrders().subscribe(orders => {
+      for (let i = 0; i < orders.length; i++) {
+        if (orders[i].product.product.id == product.id) {
+          isFound = true;
+          break;
+        }
+      }
+
+      console.log(isFound);
+
+
+      if (!isFound) {
+        callBackFunction(this.httpClient.post(ServerService.BASE_URL + '/orders', {
+          id: this.generateID(),
+          userID: userID,
+          product: {
+            product: product,
+            count: 1,
+          },
+        }));
+      } else {
+        callBackFunction(null);
+      }
+
+
+    })
+
+
   }
 
   // ____ update orders ___
 
 
   // ____ delete orders ___
-  deleteFromWish(id: number) {
-    console.log(id);
-    return this.httpClient.delete(ServerService.BASE_URL + `/wishlist/${id}`);
-  }
-
   deleteOrder(id: number) {
     console.log(id);
     return this.httpClient.delete(ServerService.BASE_URL + `/orders/${id}`);
@@ -86,6 +101,10 @@ export class ServerService {
   }
 
   // ____ delete orders ___
+  deleteFromWish(id: number) {
+    console.log(id);
+    return this.httpClient.delete(ServerService.BASE_URL + `/wishlist/${id}`);
+  }
 
   // ________________________ Generate Random ID (use it when post new any elment) ___________________
   generateID(): number {

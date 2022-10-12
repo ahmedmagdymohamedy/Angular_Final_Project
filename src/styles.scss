@@ -79,6 +79,11 @@ body {
   text-align: center;
 }
 
+.btn-hover:hover {
+  color: $primaryColor !important;
+  border: 1px solid $primaryColor !important;
+}
+
 // .tx-primry {
 //     color: $primaryColor;
 // }

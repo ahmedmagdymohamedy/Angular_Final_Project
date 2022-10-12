@@ -1,6 +1,6 @@
 {
-  "name": "angular-final-project",
-  "version": "0.0.0",
+  "name": "Brawle stars",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

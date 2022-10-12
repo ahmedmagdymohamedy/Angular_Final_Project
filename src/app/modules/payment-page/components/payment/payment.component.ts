@@ -1,3 +1,4 @@
+import { ServerService } from 'src/app/services/server.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -12,10 +13,14 @@ import {
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-  constructor(private formBulider: FormBuilder) {}
+
+  orders: any = [];
+  total: number = 0;
+
+  constructor(private formBulider: FormBuilder, private server: ServerService) { }
 
   paymentForm = this.formBulider.group({
-    fullName: ['', [Validators.required, Validators.pattern('^[A-Za-z]{3,}$')]],
+    fullName: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]],
     email: [
       '',
       [
@@ -80,5 +85,19 @@ export class PaymentComponent implements OnInit {
     return this.paymentForm.get('cvv');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.server.getOrdersBYUserId(3).subscribe(e => {
+      this.orders = e;
+      this.reCalculateTotal()
+    })
+
+  }
+
+  reCalculateTotal() {
+    this.total = 0;
+    for (let i = 0; i < this.orders.length; i++) {
+      this.total += this.orders[i].product.product.price;
+    }
+  }
 }

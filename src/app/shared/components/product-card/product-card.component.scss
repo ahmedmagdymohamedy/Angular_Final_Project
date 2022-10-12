@@ -11,24 +11,39 @@
 
 .my-card {
     background-color: white;
-    transition: 400ms;
+    transition: 800ms;
 }
 
 .my-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 2px 5px 30px #0000002b !important;
 }
 
 
-.btn-hover:hover {
-    color: #e99c2e !important;
-}
 
-.header{
+
+.header {
     font-size: 20px;
     font-weight: bold;
 }
-.p{
+
+.p {
     font-weight: bold;
     color: gray;
 
+}
+
+.delete-btn {
+    background-color: #DC3545;
+    border: 1px solid #DC3545 !important;
+}
+
+.delete-btn:hover {
+    border: 1px solid #DC3545 !important;
+    background-color: #ffffff !important;
+    color: #DC3545 !important;
+}
+
+.fa-solid {
+    line-height: unset;
 }

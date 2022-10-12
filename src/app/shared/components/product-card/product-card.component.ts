@@ -1,3 +1,6 @@
+import { ServerService } from 'src/app/services/server.service';
+import { AuthenticationService } from './../../../services/authentication.service';
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +12,32 @@ export class ProductCardComponent implements OnInit {
 
 
   @Input() product: any;
-  @Input() IsWish:boolean=false;
-  @Input() onClickAddToCard:(productID:number)=>void =()=>{};
-  @Input() onClickRemove:(productID:number)=>void =()=>{};
+  @Input() onClickRemove?: (productID: number) => void;
 
-  constructor() { }
+  constructor(private router: Router, private auth: AuthenticationService, private server: ServerService) { }
 
   ngOnInit(): void {
   }
+
+
+  goToProductDetails() {
+    this.router.navigate(['product', this.product.id]).then((e) => {
+      window.location.reload();
+    });
+  }
+
+  onClickAddToCard = (productID: number) => {
+
+    if (productID == this.product.id) {
+      this.server.addToCart(3, this.product, (e: any) => {
+
+        e?.subscribe((e: any) => {
+        }
+        );
+      });
+    }
+
+  }
+
 
 }
